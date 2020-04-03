@@ -19,8 +19,18 @@ var commentRoutes        =   require("./routes/comments"),
     campgroundRoutes     =   require("./routes/campgrounds"),
     indexRoutes          =   require("./routes/index")
 
+mongoose.connect('mongodb+srv://geekvesh:403{Error}@cluster0-qj0fi.mongodb.net/test?retryWrites=true&w=majority', {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true
+    }).then(() => {
+        console.log('Connected to DB!');
+    }).catch(err => {
+        console.log('ERROR:', err.message);
+    });
 
-mongoose.connect('mongodb+srv://geekvesh:403{Error}@cluster0-qj0fi.mongodb.net/yelp_camp_v12?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
+    
 app.use(bodyParser.urlencoded({extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
