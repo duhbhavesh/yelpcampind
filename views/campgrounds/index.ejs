@@ -1,0 +1,44 @@
+<%- include("../partials/header") %>
+
+<div>
+  <header class="jumbotron">
+      <div class="container">
+          <h1>Welcome To YelpCamp!</h1>
+          <p>View our hand-picked campgrounds from all over the INDIA!</p>
+          <p>
+             <a class="btn btn-primary btn-large" href="/campgrounds/new">Add New Campground</a>
+          </p>
+      </div>
+  </header>
+  
+  <div class="row text-center">
+       <div class="col-md-12">
+             <% if(noMatch !== null) { %>
+             <h3><%= noMatch %></h3>
+             <p>
+                <form action="/campgrounds" method="GET" class="form-inline mt-2 mt-md-0 row justify-content-center">
+                    <div class="form-group">
+                        <input type="text" name="search" class="form-control mr-sm-2" placeholder="Campgrounds search...">
+                        <button type="submit" class="btn btn-primary my-2 my-sm-0">Search</button>
+                    </div>
+                </form>
+            </p>
+             <% } %>
+         </div>
+
+        <% campgrounds.forEach(function(campground){ %>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card">
+                  <img class="card-img-top" src="<%= campground.image %>" alt="<%= campground.name %>">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= campground.name %></h5>
+                    <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                  </div>
+                </div>
+            </div>
+     <% }); %>
+ </div>
+</div>
+
+
+<%- include("../partials/footer") %>

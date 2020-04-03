@@ -1,0 +1,99 @@
+<%- include("../partials/header") %>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div id="map"></div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card mb-3">
+                            <img class="card-img-top" src="<%= campground.image %>" alt="<%= campground.name %>">
+                        <div class="card-body">
+                            <p class="float-right">
+                                ₹<%= campground.cost %>/night
+                            </p>
+                            <h5 class="card-title"><%= campground.name %></h5>
+                            <p>
+                                <em>Submitted by: <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a>, <%= moment(campground.createdAt).fromNow() %></em>
+                            </p>
+                                <hr>
+                            <p class="card-text"><%= campground.description %></p>
+                                <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                            <div class="d-inline-flex">
+                                <a class="btn btn-warning mr-2" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+                                <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                            <% } %>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-right">
+                                    <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <% campground.comments.forEach(function(comment){ %>
+                                    <div class="col-md-12 mb-2">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="float-left">
+                                                    <p class="card-title"><%= comment.author.username %></p>
+                                                    <p class="card-text"><%= comment.text %></p>
+                                                </div>
+                                                    <div class="float-right">
+                                                <p><%= moment(comment.createdAt).fromNow() %></p>
+                    
+                                                <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                                                <div class="float-right d-inline-flex">
+                                                    <a href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit" class="btn btn-sm btn-warning mr-2">EDIT</a>
+                                                    <form action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                                        <button class="btn btn-sm btn-danger">DELETE</button>
+                                                    </form>
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+
+
+<script>
+    function initMap() {
+      var lat = <%= campground.lat %>;
+      var lng = <%= campground.lng %>;
+      var center = {lat: lat, lng: lng };
+      var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: center,
+          scrollwheel: false
+      });
+      var contentString = `
+        <strong><%= campground.name %><br />
+        <%= campground.location %></strong>
+        <p><%= campground.description %></p>
+      `
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      var marker = new google.maps.Marker({
+          position: center,
+          map: map
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+    }
+  </script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=api_here&callback=initMap"></script>
+
+<%- include("../partials/footer") %>
