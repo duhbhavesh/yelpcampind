@@ -60,7 +60,7 @@ app.use(flash());
 // seedDB();
 
 // PASSPORT CONFIGURATION
-app.use(require("express-session")({
+app.use(require("cookie-session")({
     secret: "Yea Hydroxychloroquine is the cure",
     resave: false,
     saveUninitialized: false
