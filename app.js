@@ -19,17 +19,17 @@ var commentRoutes        =   require("./routes/comments"),
     campgroundRoutes     =   require("./routes/campgrounds"),
     indexRoutes          =   require("./routes/index")
 
-mongoose.connect(process.env.DATABASEURL);
-// mongoose.connect('mongodb+srv://geekvesh:403{Error}@cluster0-qj0fi.mongodb.net/test?retryWrites=true&w=majority', {
-//         useNewUrlParser: true,
-//         useCreateIndex: true,
-//         useFindAndModify: false,
-//         useUnifiedTopology: true
-//     }).then(() => {
-//         console.log('Connected to DB!');
-//     }).catch(err => {
-//         console.log('ERROR:', err.message);
-//     });
+// mongoose.connect(process.env.DATABASEURL);
+mongoose.connect('mongodb+srv://geekvesh:403{Error}@cluster0-qj0fi.mongodb.net/test?retryWrites=true&w=majority', {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true
+    }).then(() => {
+        console.log('Connected to DB!');
+    }).catch(err => {
+        console.log('ERROR:', err.message);
+    });
 
     
 app.use(bodyParser.urlencoded({extended: true }));
