@@ -20,7 +20,18 @@ var commentRoutes        =   require("./routes/comments"),
     indexRoutes          =   require("./routes/index")
 
 // mongoose.connect(process.env.DATABASEURL);
-mongoose.connect("mongodb://localhost/yelp_camp_v12", {
+// mongoose.connect("mongodb://localhost/yelp_camp_v12", {
+//         useNewUrlParser: true,
+//         useCreateIndex: true,
+//         useFindAndModify: false,
+//         useUnifiedTopology: true
+//     }).then(() => {
+//         console.log('Connected to DB!');
+//     }).catch(err => {
+//         console.log('ERROR:', err.message);
+//     });
+
+mongoose.connect("mongodb+srv://yelpcamp:403Error@cluster0-qj0fi.mongodb.net/test?retryWrites=true&w=majority", {
         useNewUrlParser: true,
         useCreateIndex: true,
         useFindAndModify: false,
