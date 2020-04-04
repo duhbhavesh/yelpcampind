@@ -98,6 +98,7 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
 // PORT: Localhost port 3000
-app.listen(3000, function(){
-    console.log("Server Started");
+var port = 3000 || process.env.PORT;
+app.listen(port, function() {
+    console.log("Server is listening");
 });
