@@ -22,10 +22,12 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right mr-5">
                             <form action="/campgrounds" method="GET" class="form-inline mt-2 mt-md-0">
-                                <div class="form-group mr-2">
+                                <div class="d-inline form-group mr-1">
                                     <input type="text" name="search" class="form-control mr-sm-2" placeholder="Campgrounds search...">
-                                    <button type="submit" class="btn btn-light my-2 my-sm-0">Search</button>
                                 </div>
+                                <div class="d-inline form-group mr-2">
+                                    <button type="submit" class="btn btn-light my-2 my-sm-0">Search</button>
+                                </div>                                
                             </form>
                             <% if(!currentUser){ %>
                                 <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
