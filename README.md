@@ -37,11 +37,13 @@ Application of Representational State Transfer (REST)
 | --------------|:--------------------------:|:------------:|---------------------------------------------------------------|:-----------------------------:|
 | Index         | `/campgrounds`             | GET          | List all the campgrounds                                      | Campground.find()             | 
 | New           | `/campgrounds/new`         | GET          | Show a form to add a <br>new campground                       | N/A                           | 
-| Create        | `/campgrounds`             | POST          | Create a new campground, <br>then redirect somewhere          | Campground.create()           |
+| Create        | `/campgrounds`             | POST         | Create a new campground, <br>then redirect somewhere          | Campground.create()           |
 | Show          | `/campgrounds`             | GET          | Show info about one <br>specific campground                   | Campground.findById()         |
 | Edit          | `/campgrounds/:id/edit`    | GET          | Show edit form about one <br>specific campground              | Campground.findById()         |
 | Update        | `/campgrounds/:id`         | PUT          | Update a particular campground, <br>then redirect somewhere   | Campground.findByIdAndUpdate()|
 | Destroy       | `/campgrounds/:id`         | DELETE       | Delete a particular campground, <br>then redirect somewhere   | Campground.findByIdAndUpdate()|
 
 
+## License
 
+MIT
