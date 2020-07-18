@@ -23,8 +23,8 @@ This application is a clone of Yelp, a US based, popular social networking site,
     - to check whether a user has logged in or not.
 - Feature to be added **Google Maps** location for a Campground.
 - Applied **dotenv** to keep the Google API key safe and hidden.
-- Added Time created since using **MomentJS.**
-- Added Image upload for a Campground using [Cloudinary](https://cloudinary.com/), a cloud service for hosting images.
+- Time functionality created using **MomentJS.**
+- Image upload functionality for a Campground created using [Cloudinary](https://cloudinary.com/), a cloud service for hosting images.
 - Used **nodemailer** to have a Reset Password functionality if a User forgets his/her password.
 - Used **req.originalUrl** and saved it to **req.session.redirectTo** to redirect back to the previous URL after successful authentication.
 
